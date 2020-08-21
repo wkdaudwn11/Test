@@ -8,7 +8,7 @@ RUN npm install react-scripts@3.4.0 -g --silent
 RUN rm -r node_modules/terser
 RUN npm install terser@3.14.1 --save-dev
 COPY . .
-RUN npm run build:dev
+RUN npm run build
 
 # Production environment
 FROM nginx:1.16.0-alpine
