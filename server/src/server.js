@@ -6,6 +6,24 @@ import testRouter from "./routes/testRouter";
 import AWS from "aws-sdk";
 AWS.config.loadFromPath(__dirname + "/config/awsconfig.json");
 
+// Create CloudWatchEvents service object
+var cwevents = new AWS.CloudWatchEvents({ apiVersion: "2015-10-07" });
+
+var params = {
+  Name: "DEMO_EVENT",
+  RoleArn: "IAM_ROLE_ARN",
+  ScheduleExpression: "rate(5 minutes)",
+  State: "ENABLED",
+};
+
+cwevents.putRule(params, function (err, data) {
+  if (err) {
+    console.log("Error", err);
+  } else {
+    console.log("Success", data.RuleArn);
+  }
+});
+
 const app = express();
 app.use(helmet());
 app.use(cors());
