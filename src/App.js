@@ -13,7 +13,7 @@ const App = () => {
   const handleClick = (val) => {
     let url = "http://localhost:4000/api";
     if (window.location.host.indexOf("localhost") === -1) {
-      url = "http://13.124.134.111/api";
+      url = "http://13.124.134.111:4000/api";
     }
     let routing = "test";
     if (val === 2) {
