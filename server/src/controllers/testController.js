@@ -1,5 +1,5 @@
 import AWS from "aws-sdk";
-AWS.config.loadFromPath(__dirname + "/config/awsconfig.json");
+AWS.config.loadFromPath(__dirname + "/../config/awsconfig.json");
 
 // Create CloudWatchEvents service object
 var cwevents = new AWS.CloudWatchEvents({ apiVersion: "2015-10-07" });
