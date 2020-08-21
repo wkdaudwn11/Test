@@ -13,3 +13,24 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
+    networks:
+      - backend
+  server:
+    container_name: test_app-server
+    build:
+      dockerfile: Dockerfile-server
+      context: ./server
+    volumes:
+      - ./server/:/app
+      - /app/node_modules
+    environment:
+      - NODE_PATH=src
+      - PORT=4000
+    ports:
+      - "4000:4000"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
