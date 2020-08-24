@@ -12,10 +12,10 @@ const App = () => {
 
   const handleClick = (val) => {
     let url = "http://localhost:4000/api";
+
     if (window.location.host.indexOf("localhost") === -1) {
       const { host } = window.location;
       url = `http://${host}:4000/api`;
-      console.log(url);
     }
     let routing = "test";
     if (val === 2) {
@@ -25,17 +25,29 @@ const App = () => {
     }
     url = `${url}/${routing}`;
 
-    fetch(url, {
+    fetch("https://ipapi.co/json/", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
       },
     })
-      // .then(response => console.log("response"))
-      .then((response) => response.json())
-      .then((response) => {
-        setPending(false);
-        setData(JSON.stringify(response));
+      .then((browserInfo) => browserInfo.json())
+      .then((browserInfo) => {
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            browserInfo,
+          }),
+        })
+          // .then(response => console.log("response"))
+          .then((response) => response.json())
+          .then((response) => {
+            setPending(false);
+            setData(JSON.stringify(response));
+          });
       });
   };
 
