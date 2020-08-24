@@ -15,6 +15,7 @@ const App = () => {
     if (window.location.host.indexOf("localhost") === -1) {
       const { host } = window.location;
       url = `${host}:4000/api`;
+      console.log(url);
     }
     let routing = "test";
     if (val === 2) {
