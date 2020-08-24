@@ -14,7 +14,7 @@ const App = () => {
     let url = "http://localhost:4000/api";
     if (window.location.host.indexOf("localhost") === -1) {
       const { host } = window.location;
-      url = `${host}:4000/api`;
+      url = `http://${host}:4000/api`;
       console.log(url);
     }
     let routing = "test";
