@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon --exec babel-node src/server.js"
+    "server": "NODE_ENV=production nodemon --exec babel-node src/server.js",
+    "server:dev": "NODE_ENV=development nodemon --exec babel-node src/server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
