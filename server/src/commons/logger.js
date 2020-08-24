@@ -8,8 +8,8 @@ let eventsQueue = [];
 let interval = null;
 // use a queue to send log to couldWatch one at a time to avoid throttling
 
-const GROUP_NAME = "api",
-  STREAM_NAME = "prod";
+const GROUP_NAME = "api2",
+  STREAM_NAME = "prod2";
 
 async function startLogQueueToCloudWatch() {
   if (interval == null) {
